@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-canvas: #FAF9F5;
+  --color-ink: #1A1918;
+  --color-spruce: #0D5C4D;
+  --color-spruce-light: #E6F4F1;
+  --color-card-border: #E8E6DF;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #FAF9F5;
+  color: #1A1918;
+  overflow-x: hidden;
+}
+
+/* Editorial display font classes */
+.font-editorial {
+  font-family: 'Instrument Serif', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+.font-editorial-italic {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+}
+
+/* Urumi-style card elevation with soft ambient diffusion */
+.card-elevated {
+  background: #FFFFFF;
+  border: 1px solid #E8E6DF;
+  box-shadow: 0 10px 30px -5px rgba(26, 25, 24, 0.04), 0 2px 6px -1px rgba(26, 25, 24, 0.02);
+}
+
+.card-elevated-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-elevated-hover:hover {
+  transform: translateY(-2px);
+  border-color: #D3D0C5;
+  box-shadow: 0 16px 40px -8px rgba(26, 25, 24, 0.08), 0 4px 12px -2px rgba(26, 25, 24, 0.04);
+}
+
+/* Floating pill navbar */
+.pill-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E8E6DF;
+  box-shadow: 0 6px 24px -4px rgba(26, 25, 24, 0.06);
+}
+
+/* Warm clean scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF9F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D6D3C9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A8A29E;
+}
