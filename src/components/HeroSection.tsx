@@ -56,7 +56,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBF5F3] border border-[#D1E7E2] text-[#0D5C4D] text-[11px] font-mono tracking-wider uppercase font-medium"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#0D5C4D]" />
-            <span>SERVICES · JAIPUR · DELHI · PAN-INDIA</span>
+            <span>SERVICES · DEHRADUN · DELHI · PAN-INDIA</span>
           </motion.div>
 
           {/* Editorial Display Headline */}

@@ -8,10 +8,15 @@ import { ProcessSection } from "./components/ProcessSection";
 import { LeadershipSection } from "./components/LeadershipSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
+import { ScrollProgress } from "./components/ScrollProgress";
+import { ClickEffect } from "./components/ClickEffect";
 
 function App() {
   return (
+
     <div className="min-h-[100dvh] bg-[#FAF9F5] text-[#1A1918] relative overflow-x-hidden selection:bg-[#0D5C4D]/20 selection:text-[#0D5C4D]">
+      <ScrollProgress/>
+      <ClickEffect />
       {/* Classy warm ambient lighting vibe */}
       <CyberBackground />
 
