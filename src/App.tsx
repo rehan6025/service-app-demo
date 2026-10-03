@@ -11,6 +11,8 @@ import { Footer } from "./components/Footer";
 import { ScrollProgress } from "./components/ScrollProgress";
 import { ClickEffect } from "./components/ClickEffect";
 
+import { HeroCursorBrush } from "./components/HeroCursorBrush";
+
 function App() {
   return (
 
@@ -25,8 +27,10 @@ function App() {
 
       {/* Editorial Content Flow */}
       <main className="relative z-10">
-        <HeroSection />
-        <TrustBanner />
+        <HeroCursorBrush>
+          <HeroSection />
+          <TrustBanner />
+        </HeroCursorBrush>
         <AboutSection />
         <ServicesBento />
         <ProcessSection />
