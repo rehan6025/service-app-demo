@@ -2,13 +2,34 @@ import { useState, type FormEvent } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, CheckCircle, EnvelopeSimple, PhoneCall, MapPin } from "@phosphor-icons/react";
 
+export const CONTACT_CONTENT = {
+  sectionTag: "05 / GET IN TOUCH",
+  title: "Start a project with Bitcom",
+  subtitle:
+    "Whether you need a full enterprise security assessment, custom software architecture, or ongoing systems management, our senior team is ready to consult.",
+  email: "contact@bitcom.in",
+  phone: "+91 (0) 120 456 7890",
+  phoneDisplay: "+91 (0) 120 456 7890",
+  address: "Pan-India Operations · Headquarters in India",
+  ndaNote: "All inquiries protected under strict NDA protocols.",
+  serviceOptions: [
+    "Cyber Security & Threat Audit",
+    "Custom Software Development",
+    "Web Platform Development",
+    "Mobile App Engineering",
+    "Web Design & UX",
+    "Graphics & Brand Design",
+    "Digital Marketing & SEO",
+  ],
+};
+
 export function ContactSection() {
   const reduceMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "Cyber Security & Threat Audit",
+    service: CONTACT_CONTENT.serviceOptions[0],
     message: "",
   });
 
@@ -30,38 +51,38 @@ export function ContactSection() {
             className="lg:col-span-5 space-y-6"
           >
             <div className="text-xs font-mono tracking-widest text-[#0D5C4D] uppercase font-semibold">
-              05 / GET IN TOUCH
+              {CONTACT_CONTENT.sectionTag}
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial text-[#1A1918] tracking-tight leading-tight">
-              Start a project with Bitcom
+              {CONTACT_CONTENT.title}
             </h2>
 
             <p className="text-[#57534E] text-base leading-relaxed">
-              Whether you need a full enterprise security assessment, custom software architecture, or ongoing systems management, our senior team is ready to consult.
+              {CONTACT_CONTENT.subtitle}
             </p>
 
             <div className="space-y-4 pt-4 border-t border-[#E8E6DF] text-sm text-[#57534E]">
               <div className="flex items-center gap-3">
                 <EnvelopeSimple size={18} className="text-[#0D5C4D]" />
-                <a href="mailto:contact@bitcom.in" className="hover:text-[#0D5C4D] transition-colors">
-                  contact@bitcom.in
+                <a href={`mailto:${CONTACT_CONTENT.email}`} className="hover:text-[#0D5C4D] transition-colors">
+                  {CONTACT_CONTENT.email}
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <PhoneCall size={18} className="text-[#0D5C4D]" />
-                <a href="tel:+919876543210" className="hover:text-[#0D5C4D] transition-colors">
-                  +91 (0) 120 456 7890
+                <a href={`tel:${CONTACT_CONTENT.phone.replace(/[^+\d]/g, "")}`} className="hover:text-[#0D5C4D] transition-colors">
+                  {CONTACT_CONTENT.phoneDisplay}
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin size={18} className="text-[#0D5C4D]" />
-                <span>Pan-India Operations · Headquarters in India</span>
+                <span>{CONTACT_CONTENT.address}</span>
               </div>
             </div>
 
             <div className="text-xs font-mono text-[#78716C] pt-2">
-              All inquiries protected under strict NDA protocols.
+              {CONTACT_CONTENT.ndaNote}
             </div>
           </motion.div>
 
@@ -144,13 +165,11 @@ export function ContactSection() {
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl border border-[#E8E6DF] bg-[#FAF9F5] text-sm text-[#1A1918] focus:outline-none focus:ring-2 focus:ring-[#0D5C4D] focus:border-transparent transition-all"
                   >
-                    <option value="Cyber Security & Threat Audit">Cyber Security & Threat Audit</option>
-                    <option value="Custom Software Development">Custom Software Development</option>
-                    <option value="Web Platform Development">Web Platform Development</option>
-                    <option value="Mobile App Engineering">Mobile App Engineering</option>
-                    <option value="Web Design & UX">Web Design & UX</option>
-                    <option value="Graphics & Brand Design">Graphics & Brand Design</option>
-                    <option value="Digital Marketing & SEO">Digital Marketing & SEO</option>
+                    {CONTACT_CONTENT.serviceOptions.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
                   </select>
                 </div>
 

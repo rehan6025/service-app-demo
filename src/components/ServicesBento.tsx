@@ -2,15 +2,17 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Plus, Minus, ArrowRight } from "@phosphor-icons/react";
 
-export function ServicesBento() {
-  const reduceMotion = useReducedMotion();
-  const [openIndex, setOpenIndex] = useState<number>(0);
-
-  const services = [
+export const SERVICES_CONTENT = {
+  sectionTag: "02 / WHAT WE ENGINEER",
+  title: "Comprehensive technology services",
+  subtitle:
+    "Click each capability to explore technical specifications and how we execute for your business.",
+  services: [
     {
       tag: "DEFENSE",
       title: "Cyber Security & Threat Defense",
-      headline: "Enterprise threat mitigation, vulnerability research, and continuous data protection.",
+      headline:
+        "Enterprise threat mitigation, vulnerability research, and continuous data protection.",
       desc: "Safeguard your business from sophisticated online threats with our expert cyber security services. We deliver zero-day vulnerability audits, rigorous penetration testing, and enterprise data hardening.",
       capabilities: [
         "Vulnerability Assessment and Penetration Testing (VAPT)",
@@ -22,7 +24,8 @@ export function ServicesBento() {
     {
       tag: "SOFTWARE",
       title: "Custom Software Development",
-      headline: "Custom software engineering creating scalable, efficient enterprise applications.",
+      headline:
+        "Custom software engineering creating scalable, efficient enterprise applications.",
       desc: "Transform complex operational ideas into innovative software solutions. We architect resilient systems engineered for high concurrency, seamless API integrations, and low maintenance overhead.",
       capabilities: [
         "Distributed microservices and high-scale backend APIs",
@@ -34,7 +37,8 @@ export function ServicesBento() {
     {
       tag: "PLATFORMS",
       title: "Web Platform Development",
-      headline: "Build a powerful, responsive online platform with expert web engineering.",
+      headline:
+        "Build a powerful, responsive online platform with expert web engineering.",
       desc: "Custom, scalable solutions for high-traffic web applications. We build ultra-fast, user-friendly digital portals with modern frameworks and robust database infrastructure.",
       capabilities: [
         "Modern Next.js, Vite, and Node.js enterprise architecture",
@@ -46,7 +50,8 @@ export function ServicesBento() {
     {
       tag: "MOBILE",
       title: "Mobile App Development",
-      headline: "Bring your vision to life with custom iOS and Android applications.",
+      headline:
+        "Bring your vision to life with custom iOS and Android applications.",
       desc: "Deliver fluid, high-performance mobile experiences across devices. We design and develop cross-platform native applications tailored for customer engagement and operational speed.",
       capabilities: [
         "Cross-platform Flutter and React Native engineering",
@@ -58,7 +63,8 @@ export function ServicesBento() {
     {
       tag: "DESIGN",
       title: "Web Design & User Experience",
-      headline: "Create a stunning online presence with custom human-centric design.",
+      headline:
+        "Create a stunning online presence with custom human-centric design.",
       desc: "We don't just design; we craft a visual masterpiece that brings out the brightest colors and credibility of your brand. User-friendly, responsive, and visually appealing web interfaces.",
       capabilities: [
         "Design systems and comprehensive component libraries",
@@ -70,7 +76,8 @@ export function ServicesBento() {
     {
       tag: "IDENTITY",
       title: "Graphics & Brand Identity",
-      headline: "Elevate your brand with creative and impactful visual design.",
+      headline:
+        "Elevate your brand with creative and impactful visual design.",
       desc: "Visually stunning designs for corporate logos, digital branding, marketing materials, and enterprise presentations that leave a lasting professional impression.",
       capabilities: [
         "Brand mark, typography, and visual language systems",
@@ -82,7 +89,8 @@ export function ServicesBento() {
     {
       tag: "GROWTH",
       title: "Performance Digital Marketing",
-      headline: "Boost your online presence with results-driven digital growth strategies.",
+      headline:
+        "Boost your online presence with results-driven digital growth strategies.",
       desc: "Data-driven organic search optimization, paid campaigns, and strategic digital reach engineered to turn prospective traffic into long-term commercial relationships.",
       capabilities: [
         "Technical SEO auditing and organic search dominance",
@@ -91,12 +99,17 @@ export function ServicesBento() {
         "Conversion funnel tracking and analytics reporting",
       ],
     },
-  ];
+  ],
+};
+
+export function ServicesBento() {
+  const reduceMotion = useReducedMotion();
+  const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
     <section id="services" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#E8E6DF] bg-white/40">
       <div className="max-w-4xl mx-auto space-y-10">
-        {/* Section Header (Matches Urumi 02 / WHAT WE'RE BUILDING) */}
+        {/* Section Header */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -104,21 +117,21 @@ export function ServicesBento() {
           className="space-y-4"
         >
           <div className="text-xs font-mono tracking-widest text-[#0D5C4D] uppercase font-semibold">
-            02 / WHAT WE ENGINEER
+            {SERVICES_CONTENT.sectionTag}
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial text-[#1A1918] tracking-tight leading-tight">
-            Comprehensive technology services
+            {SERVICES_CONTENT.title}
           </h2>
 
           <p className="text-[#57534E] text-base sm:text-lg max-w-2xl font-normal">
-            Click each capability to explore technical specifications and how we execute for your business.
+            {SERVICES_CONTENT.subtitle}
           </p>
         </motion.div>
 
-        {/* Accordion Stack (Exact Urumi accordion pattern) */}
+        {/* Accordion Stack */}
         <div className="space-y-3">
-          {services.map((item, index) => {
+          {SERVICES_CONTENT.services.map((item, index) => {
             const isOpen = openIndex === index;
 
             return (

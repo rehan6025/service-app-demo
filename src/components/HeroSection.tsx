@@ -1,10 +1,23 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "@phosphor-icons/react";
 
-export function HeroSection() {
-  const reduceMotion = useReducedMotion();
-
-  const capabilities = [
+export const HERO_CONTENT = {
+  eyebrow: "SERVICES · DEHRADUN · DELHI · PAN-INDIA",
+  headlineStart: "We are Bitcom,",
+  headlineMiddle: "trusted by leaders to",
+  headlineAccent: "make technology work.",
+  subtext:
+    "We know how to deliver on technology's promise of business efficiency. Put your systems management and custom tech infrastructure in the hands of seasoned professionals.",
+  primaryCta: { text: "View services", href: "#services" },
+  secondaryCta: { text: "Schedule audit", href: "#contact" },
+  credibilityTags: [
+    "200+ Enterprise Projects",
+    "Government Verified",
+    "Bug Bounty Recognized",
+  ],
+  capabilitiesHeader: "Core capabilities · 6",
+  capabilitiesBadge: "ACTIVE",
+  capabilities: [
     {
       title: "Cyber Security & Threat Defense",
       sub: "Security Ops · Zero-Day Auditing · VAPT",
@@ -41,14 +54,18 @@ export function HeroSection() {
       arrow: true,
       href: "#services",
     },
-  ];
+  ],
+};
+
+export function HeroSection() {
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="relative pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
         {/* Left Column: Editorial Headline & Actions (col-span-7) */}
         <div className="lg:col-span-7 space-y-6">
-          {/* Top Eyebrow Pill (Matches Urumi badge) */}
+          {/* Top Eyebrow Pill */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -56,7 +73,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBF5F3] border border-[#D1E7E2] text-[#0D5C4D] text-[11px] font-mono tracking-wider uppercase font-medium"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#0D5C4D]" />
-            <span>SERVICES · DEHRADUN · DELHI · PAN-INDIA</span>
+            <span>{HERO_CONTENT.eyebrow}</span>
           </motion.div>
 
           {/* Editorial Display Headline */}
@@ -66,10 +83,10 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.08 }}
             className="text-4xl sm:text-5xl lg:text-[3.75rem] font-editorial text-[#1A1918] leading-[1.08] tracking-tight pb-1"
           >
-            We are Bitcom, <br />
-            trusted by leaders to <br />
+            {HERO_CONTENT.headlineStart} <br />
+            {HERO_CONTENT.headlineMiddle} <br />
             <span className="font-editorial-italic text-[#0D5C4D] pr-1">
-              make technology work.
+              {HERO_CONTENT.headlineAccent}
             </span>
           </motion.h1>
 
@@ -80,10 +97,10 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.16 }}
             className="text-base text-[#57534E] leading-relaxed max-w-lg"
           >
-            We know how to deliver on technology's promise of business efficiency. Put your systems management and custom tech infrastructure in the hands of seasoned professionals.
+            {HERO_CONTENT.subtext}
           </motion.p>
 
-          {/* Pill Action Buttons (Matches Urumi pill CTAs) */}
+          {/* Pill Action Buttons */}
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -91,18 +108,18 @@ export function HeroSection() {
             className="flex flex-wrap items-center gap-3 pt-2"
           >
             <a
-              href="#services"
+              href={HERO_CONTENT.primaryCta.href}
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-[#18181B] hover:bg-black active:bg-black rounded-full transition-all duration-200 shadow-sm hover:shadow cursor-pointer"
             >
-              <span>View services</span>
+              <span>{HERO_CONTENT.primaryCta.text}</span>
               <ArrowRight size={15} weight="bold" />
             </a>
 
             <a
-              href="#contact"
+              href={HERO_CONTENT.secondaryCta.href}
               className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-[#1A1918] bg-transparent hover:bg-black/[0.04] border border-[#D6D3C9] rounded-full transition-all duration-200 cursor-pointer"
             >
-              <span>Schedule audit</span>
+              <span>{HERO_CONTENT.secondaryCta.text}</span>
             </a>
           </motion.div>
 
@@ -111,17 +128,18 @@ export function HeroSection() {
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.32 }}
-            className="pt-4 text-xs font-mono text-[#78716C] flex items-center gap-2"
+            className="pt-4 text-xs font-mono text-[#78716C] flex flex-wrap items-center gap-2"
           >
-            <span>200+ Enterprise Projects</span>
-            <span>·</span>
-            <span>Government Verified</span>
-            <span>·</span>
-            <span>Bug Bounty Recognized</span>
+            {HERO_CONTENT.credibilityTags.map((tag, idx) => (
+              <span key={tag} className="flex items-center gap-2">
+                <span>{tag}</span>
+                {idx < HERO_CONTENT.credibilityTags.length - 1 && <span>·</span>}
+              </span>
+            ))}
           </motion.div>
         </div>
 
-        {/* Right Column: Floating Elevated White Card (Matches Urumi card, col-span-5) */}
+        {/* Right Column: Floating Elevated White Card (col-span-5) */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,16 +150,16 @@ export function HeroSection() {
             {/* Card Header */}
             <div className="flex items-center justify-between pb-4 border-b border-[#F0EEE6]">
               <span className="text-xs font-mono text-[#78716C] uppercase tracking-wider">
-                Core capabilities · 6
+                {HERO_CONTENT.capabilitiesHeader}
               </span>
               <span className="text-[10px] font-mono text-[#0D5C4D] bg-[#EBF5F3] px-2 py-0.5 rounded-full font-semibold">
-                ACTIVE
+                {HERO_CONTENT.capabilitiesBadge}
               </span>
             </div>
 
             {/* List Rows with Divider lines */}
             <div className="divide-y divide-[#F0EEE6]">
-              {capabilities.map((item) => (
+              {HERO_CONTENT.capabilities.map((item) => (
                 <a
                   key={item.title}
                   href={item.href}

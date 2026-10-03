@@ -1,10 +1,10 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Globe, ShieldCheck, Lightning, UsersThree } from "@phosphor-icons/react";
 
-export function ProcessSection() {
-  const reduceMotion = useReducedMotion();
-
-  const cards = [
+export const PROCESS_CONTENT = {
+  sectionTag: "03 / HOW WE WORK",
+  title: "How we work",
+  cards: [
     {
       icon: <Globe size={20} weight="regular" className="text-[#0D5C4D]" />,
       title: "Pan-India reach, unified delivery.",
@@ -25,12 +25,16 @@ export function ProcessSection() {
       title: "Direct executive leadership.",
       desc: "Direct architectural oversight by founders Vaibhav Parashar and Kaushal Jangid. No disconnected handoffs; senior expertise guides your project at every stage.",
     },
-  ];
+  ],
+};
+
+export function ProcessSection() {
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="process" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-12">
-        {/* Section Header (Exact Urumi 04 / HOW WE WORK format) */}
+        {/* Section Header */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -38,17 +42,17 @@ export function ProcessSection() {
           className="space-y-4"
         >
           <div className="text-xs font-mono tracking-widest text-[#0D5C4D] uppercase font-semibold">
-            03 / HOW WE WORK
+            {PROCESS_CONTENT.sectionTag}
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial text-[#1A1918] tracking-tight leading-tight">
-            How we work
+            {PROCESS_CONTENT.title}
           </h2>
         </motion.div>
 
-        {/* 4-Card Horizontal Grid (Exact match to Urumi Screenshot 2) */}
+        {/* 4-Card Horizontal Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card, index) => (
+          {PROCESS_CONTENT.cards.map((card, index) => (
             <motion.div
               key={card.title}
               initial={reduceMotion ? false : { opacity: 0, y: 16 }}
@@ -58,7 +62,7 @@ export function ProcessSection() {
               className="card-elevated card-elevated-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between space-y-6 bg-white min-h-[300px]"
             >
               <div className="space-y-4">
-                {/* Icon in soft teal circle (matches Urumi icon chip) */}
+                {/* Icon */}
                 <div className="w-10 h-10 rounded-xl bg-[#EBF5F3] flex items-center justify-center border border-[#D1E7E2]">
                   {card.icon}
                 </div>

@@ -1,10 +1,12 @@
 import { motion, useReducedMotion } from "motion/react";
 import { CheckCircle } from "@phosphor-icons/react";
 
-export function LeadershipSection() {
-  const reduceMotion = useReducedMotion();
-
-  const leaders = [
+export const LEADERSHIP_CONTENT = {
+  sectionTag: "04 / LEADERSHIP",
+  title: "The leadership team",
+  subtitle:
+    "Direct access to senior founders and verified security researchers on every deployment.",
+  leaders: [
     {
       name: "Vaibhav Parashar",
       role: "CHIEF EXECUTIVE OFFICER & FOUNDER",
@@ -29,7 +31,11 @@ export function LeadershipSection() {
         "Pan-India Enterprise Delivery Management",
       ],
     },
-  ];
+  ],
+};
+
+export function LeadershipSection() {
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="team" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#E8E6DF] bg-white/40">
@@ -42,21 +48,21 @@ export function LeadershipSection() {
           className="space-y-4"
         >
           <div className="text-xs font-mono tracking-widest text-[#0D5C4D] uppercase font-semibold">
-            04 / LEADERSHIP
+            {LEADERSHIP_CONTENT.sectionTag}
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial text-[#1A1918] tracking-tight leading-tight">
-            The leadership team
+            {LEADERSHIP_CONTENT.title}
           </h2>
 
           <p className="text-[#57534E] text-base sm:text-lg max-w-xl font-normal">
-            Direct access to senior founders and verified security researchers on every deployment.
+            {LEADERSHIP_CONTENT.subtitle}
           </p>
         </motion.div>
 
         {/* 2-Column Leadership Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {leaders.map((leader, index) => (
+          {LEADERSHIP_CONTENT.leaders.map((leader, index) => (
             <motion.div
               key={leader.name}
               initial={reduceMotion ? false : { opacity: 0, y: 16 }}

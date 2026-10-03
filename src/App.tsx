@@ -15,30 +15,44 @@ import { HeroCursorBrush } from "./components/HeroCursorBrush";
 
 function App() {
   return (
-
     <div className="min-h-[100dvh] bg-[#FAF9F5] text-[#1A1918] relative overflow-x-hidden selection:bg-[#0D5C4D]/20 selection:text-[#0D5C4D]">
-      <ScrollProgress/>
+      {/* Top scroll progress indicator bar (toggle here) */}
+      <ScrollProgress />
+
+      {/* Interactive mouse click radar ping effect (toggle here) */}
       <ClickEffect />
-      {/* Classy warm ambient lighting vibe */}
+
+      {/* Ambient warm lighting & dot grid background */}
       <CyberBackground />
 
       {/* Floating Pill Navigation */}
       <Navbar />
 
-      {/* Editorial Content Flow */}
+      {/* Main Page Sections Flow - Reorder or toggle sections here */}
       <main className="relative z-10">
+        {/* Hero zone with subtle cursor follow glow (wrap or unwrap HeroCursorBrush) */}
         <HeroCursorBrush>
           <HeroSection />
           <TrustBanner />
         </HeroCursorBrush>
+
+        {/* 01: About & company metrics */}
         <AboutSection />
+
+        {/* 02: Expandable capabilities accordion */}
         <ServicesBento />
+
+        {/* 03: 4-card process overview */}
         <ProcessSection />
+
+        {/* 04: Leadership team profiles */}
         <LeadershipSection />
+
+        {/* 05: Contact info and interactive consultation form */}
         <ContactSection />
       </main>
 
-      {/* Warm Clean Footer */}
+      {/* Site footer & back to top */}
       <Footer />
     </div>
   );

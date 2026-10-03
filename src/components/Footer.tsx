@@ -1,5 +1,26 @@
 import { ShieldCheck, ArrowUp } from "@phosphor-icons/react";
 
+export const FOOTER_CONTENT = {
+  brandName: "Bitcom Informatics",
+  description:
+    "We know how to make technology work for your enterprise. Delivering elite cybersecurity defense, mission-critical infrastructure, and scalable custom applications throughout India.",
+  operationsBadge: "● Operations active across India",
+  capabilities: [
+    { label: "Cybersecurity & Threat Defense", href: "#services" },
+    { label: "Custom Software Development", href: "#services" },
+    { label: "Web Platform Engineering", href: "#services" },
+    { label: "Mobile App Development", href: "#services" },
+    { label: "Web Design & UX Architecture", href: "#services" },
+    { label: "Performance Digital Marketing", href: "#services" },
+  ],
+  navigation: [
+    { label: "About Bitcom", href: "#about" },
+    { label: "How We Work", href: "#process" },
+    { label: "Leadership", href: "#team" },
+    { label: "Contact us", href: "#contact" },
+  ],
+};
+
 export function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -16,16 +37,16 @@ export function Footer() {
                 <ShieldCheck size={18} weight="duotone" />
               </div>
               <span className="text-lg font-semibold tracking-tight text-[#1A1918]">
-                Bitcom Informatics
+                {FOOTER_CONTENT.brandName}
               </span>
             </div>
 
             <p className="text-xs sm:text-sm text-[#57534E] max-w-sm leading-relaxed">
-              We know how to make technology work for your enterprise. Delivering elite cybersecurity defense, mission-critical infrastructure, and scalable custom applications throughout India.
+              {FOOTER_CONTENT.description}
             </p>
 
             <div className="text-xs font-mono text-[#0D5C4D]">
-              ● Operations active across India
+              {FOOTER_CONTENT.operationsBadge}
             </div>
           </div>
 
@@ -35,12 +56,13 @@ export function Footer() {
               Capabilities
             </div>
             <ul className="space-y-2 text-xs text-[#57534E]">
-              <li><a href="#services" className="hover:text-[#0D5C4D] transition-colors">Cybersecurity & Threat Defense</a></li>
-              <li><a href="#services" className="hover:text-[#0D5C4D] transition-colors">Custom Software Development</a></li>
-              <li><a href="#services" className="hover:text-[#0D5C4D] transition-colors">Web Platform Engineering</a></li>
-              <li><a href="#services" className="hover:text-[#0D5C4D] transition-colors">Mobile App Development</a></li>
-              <li><a href="#services" className="hover:text-[#0D5C4D] transition-colors">Web Design & UX Architecture</a></li>
-              <li><a href="#services" className="hover:text-[#0D5C4D] transition-colors">Performance Digital Marketing</a></li>
+              {FOOTER_CONTENT.capabilities.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="hover:text-[#0D5C4D] transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -50,10 +72,13 @@ export function Footer() {
               Navigation
             </div>
             <ul className="space-y-2 text-xs text-[#57534E]">
-              <li><a href="#about" className="hover:text-[#0D5C4D] transition-colors">About Bitcom</a></li>
-              <li><a href="#process" className="hover:text-[#0D5C4D] transition-colors">How We Work</a></li>
-              <li><a href="#team" className="hover:text-[#0D5C4D] transition-colors">Leadership</a></li>
-              <li><a href="#contact" className="hover:text-[#0D5C4D] transition-colors">Contact us</a></li>
+              {FOOTER_CONTENT.navigation.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="hover:text-[#0D5C4D] transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
